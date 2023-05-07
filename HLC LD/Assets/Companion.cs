@@ -8,7 +8,6 @@ public class Companion : MonoBehaviour
 {
    public NavMeshAgent robot;
    public Transform Player;
-   public Animator anim;
 
    private void Update()
    {
