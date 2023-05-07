@@ -21,7 +21,7 @@ public class ColorModifier : MonoBehaviour
             Debug.Log("ca detecte ?");
             if (Input.GetKeyDown(changeColor))
             {
-                rend.material.color = new Color(236, 90, 90);
+                rend.material.color = Color.red;
                 Debug.Log("ca fonctionne ?");
             }
         }
