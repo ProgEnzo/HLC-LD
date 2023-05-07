@@ -20,7 +20,7 @@ public class MovingPlateformes : MonoBehaviour
         if (!isOnBoard)
             return;
         
-        if (!isMoving)
+        if (!isMoving) //Jacques a dit que j'ai du nesting
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -34,15 +34,15 @@ public class MovingPlateformes : MonoBehaviour
             if (isOnTop)
             {
                 target = targetDown;
-                Descente();
+                MaLaBa(targetDown);
             }
             else
             {
                 target = targetTop;
-                Ascension();
+                MaLaBa(targetTop);
             }
 
-            if ((target.position - transform.position).magnitude <= 0.5f)
+            if (Vector3.Distance(target.position, transform.position) <= 0.5f)
             {
                 isMoving = false;
                 isOnTop = !isOnTop;
@@ -69,14 +69,18 @@ public class MovingPlateformes : MonoBehaviour
             isOnBoard = false;
         }
     }
-
-    private void Ascension()
+    
+    private void MaLaBa(Transform target)
     {
-        transform.position = Vector3.Lerp(transform.position, targetTop.position, speed * Time.deltaTime);
+        Vector3 direction = (target.position - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
+        //transform.position = Vector3.Lerp(transform.position, targetTop.position, speed * Time.deltaTime);
     }
 
-    private void Descente()
+    /*private void Descente()
     {
-        transform.position = Vector3.Lerp(transform.position, targetDown.position, speedForPortail * Time.deltaTime);
-    }
+        Vector3 direction = (targetDown.position - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
+        //transform.position = Vector3.Lerp(transform.position, targetDown.position, speedForPortail * Time.deltaTime);
+    }*/
 }
