@@ -9,11 +9,26 @@ public class HotAndColdElements : MonoBehaviour
     [SerializeField] private GameObject chaud;
     [SerializeField] private GameObject froid;
 
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private KeyCode chaudInput = KeyCode.A;
+    [SerializeField] private KeyCode froidInput = KeyCode.E;
+
+
+    private void Update()
     {
-        /*if (Input.GetKeyDown())
+        SwitchChaudFroid();
+    }
+
+    private void SwitchChaudFroid()
+    {
+        if (Input.GetKeyDown(chaudInput))
         {
-            
-        }*/
+            chaud.SetActive(true);
+            froid.SetActive(false);
+        }
+        else if (Input.GetKeyDown(froidInput))
+        {
+            chaud.SetActive(false);
+            froid.SetActive(true);
+        }
     }
 }
