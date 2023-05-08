@@ -21,4 +21,12 @@ public class TpZones : MonoBehaviour
             player.transform.position = target.transform.position;
         }
     }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canvas.SetActive(false);
+        }
+    }
 }

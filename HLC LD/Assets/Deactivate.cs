@@ -24,4 +24,12 @@ public class Deactivate : MonoBehaviour
             }
         }
     }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canvas.SetActive(false);
+        }
+    }
 }
