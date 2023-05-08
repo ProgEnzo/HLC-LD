@@ -58,6 +58,7 @@ public class MenuManager : MonoBehaviour
             Time.timeScale = 0;
             pause.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             //UiAnimPause.instance.OpenMenu();
         }
     }
@@ -67,6 +68,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         isGamePaused = false;
         pause.SetActive(false);
+        Cursor.visible = false;
         //UiAnimPause.instance.CloseMenu();
     }
     
@@ -75,12 +77,13 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         //UiAnimGameOver.instance.CloseMenu();
         pause.SetActive(false);
+        Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void BackToMenu()
     {
         Time.timeScale = 1;
-        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
     }
 }
